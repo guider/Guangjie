@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- CompaBaseListFragment ids-->
+    <item name="listview" type="id" />
+    <item name="textview" type="id" />
+    <item name="error_view" type="id"/>
+    <item name="empty_view" type="id" />
+    <item name="swiperefreshlayout" type="id" />
+    <item name="drag_handle" type="id" />
+    <item name="click_remove" type="id" />
+
+
+</resources>

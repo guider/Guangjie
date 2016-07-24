@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BadgeRadioButton">
+        <attr name="bgColor" format="color|reference" />
+        <attr name="textColor" format="color|reference" />
+        <attr name="textSize" format="dimension|reference" />
+        <attr name="marginTop" format="reference|dimension" />
+        <attr name="marginRight" format="dimension|reference" />
+        <attr name="marginBottom" format="dimension|reference" />
+        <attr name="marginLeft" format="dimension|reference" />
+        <attr name="badgePadding" format="dimension|reference" />
+        <attr name="badgeText" format="string|reference" />
+        <attr name="badgeShow" format="boolean|reference" />
+    </declare-styleable>
+</resources>
