@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GuangJie.iml" filepath="$PROJECT_DIR$/GuangJie.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/devhelper/devhelper.iml" filepath="$PROJECT_DIR$/devhelper/devhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ezmvp/ezmvp.iml" filepath="$PROJECT_DIR$/ezmvp/ezmvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iosdialog/iosdialog.iml" filepath="$PROJECT_DIR$/iosdialog/iosdialog.iml" />
     </modules>
   </component>
 </project>
