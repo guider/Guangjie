@@ -15,7 +15,6 @@ import com.yanyuanquan.android.guangjie.base.widget.SP;
  */
 public class App extends Application {
 
-
     private static Context app;
     private static Handler mHandler;
 

@@ -13,8 +13,7 @@ import rx.Subscription;
 public class MainModel extends BaseModel {
 
     public Subscription getList(LoadingSubscriber subscriber) {
-
-        return null;
+        return HttpManager.getList(subscriber);
     }
 
 }

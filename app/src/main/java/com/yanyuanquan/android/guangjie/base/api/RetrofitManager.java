@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * github https://github.com/guider
  */
 public class RetrofitManager {
-    private static final String BASE_API = "http://guangdiu.com/api";
+    private static final String BASE_API = "http://guangdiu.com/api/";
     private SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
     private String DATE = sdf.format(new Date(System.currentTimeMillis()));
 

@@ -37,7 +37,7 @@ public class BasePresenter<V, M extends EzModel,D> extends EzPresenter<V, M> {
      *
      * @return
      */
-    public BehaviorSubject<D> getDataSubject() {
+    public BehaviorSubject<D> getCacheDataSubject() {
         return mData;
     }
 
@@ -46,7 +46,7 @@ public class BasePresenter<V, M extends EzModel,D> extends EzPresenter<V, M> {
      *
      * @return
      */
-    public D getData() {
+    public D getCacheData() {
         return mData.getValue();
     }
 
@@ -55,7 +55,7 @@ public class BasePresenter<V, M extends EzModel,D> extends EzPresenter<V, M> {
      *
      * @param data
      */
-    public void setData(D data) {
+    public void setCahceData(D data) {
         mData.onNext(data);
     }
 }

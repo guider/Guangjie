@@ -7,12 +7,13 @@ import com.yanyuanquan.android.automvp.annotation.Presenter;
 import com.yanyuanquan.android.automvp.expland.EzListFragment;
 import com.yanyuanquan.android.automvp.expland.adapter.EzHolder;
 import com.yanyuanquan.android.guangjie.R;
+import com.yanyuanquan.android.guangjie.model.Entity;
 
 @Presenter(HomePresenter.class)
-public class HomeFragmnet extends EzListFragment<HomePresenter,Object> {
+public class HomeFragmnet extends EzListFragment<HomePresenter,Entity> {
 
     @Override
-    public void setItemData(Object o, EzHolder holder, Context context) {
+    public void setItemData(Entity entity, EzHolder holder, Context context) {
 
     }
 

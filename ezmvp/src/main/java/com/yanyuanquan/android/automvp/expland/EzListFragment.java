@@ -110,7 +110,7 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
 
     public abstract void initData();
 
-    protected void setRefreshComplete() {
+    public void setRefreshComplete() {
         if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.post(new Runnable() {
                 @Override

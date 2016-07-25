@@ -37,7 +37,7 @@ public class Entity  {
     private String mall;
     private String buyurl;
     private String dealfeature;
-    private List<String> cates;
+    private Object cates;
 
     public int getId() {
         return id;
@@ -135,11 +135,11 @@ public class Entity  {
         this.dealfeature = dealfeature;
     }
 
-    public List<String> getCates() {
+    public Object getCates() {
         return cates;
     }
 
-    public void setCates(List<String> cates) {
+    public void setCates(Object cates) {
         this.cates = cates;
     }
 }
