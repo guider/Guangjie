@@ -1,11 +1,12 @@
 package com.yanyuanquan.android.guangjie.base.api;
 
 
-import android.accounts.Account;
-
 import com.yanyuanquan.android.guangjie.base.App;
 import com.yanyuanquan.android.guangjie.base.widget.LoadingSubscriber;
 import com.yanyuanquan.android.guangjie.base.widget.TopToast;
+import com.yanyuanquan.android.guangjie.model.Entity;
+import com.yanyuanquan.android.guangjie.model.HotEntity;
+import com.yanyuanquan.android.guangjie.model.Trank;
 
 import junit.framework.Test;
 
@@ -15,10 +16,13 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by apple on 16/6/2.
+ * Created by guider on 16/4/29.
+ * Email guider@yeah.net
+ * github https://github.com/guider
  */
 public class HttpManager {
     //设缓存有效期为两个星期
@@ -32,35 +36,59 @@ public class HttpManager {
     private static final int HTTP_EXCEPTION_502 = 502;
     private static final int HTTP_EXCEPTION_404 = 404;
 
-
-//
-//    public static Subscription resetPwd(LoadingSubscriber<Account> subscriber, ApiParams params) {
-//        Observable<WrapData<Account>> o = getService().resetPwd(params);
-//        return doSubscriber(subscriber, o);
-//    }
-
-
-    public static Subscription login(Token paramas, String OAuth, LoadingSubscriber<Account> subscriber) {
-        Observable<Account> o = getService().login(paramas, OAuth);
-        return doSubscriber(subscriber, o);
+    public static Subscription getList(LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getList("", "", "");
+        return doListSubscriber(subscriber, o);
     }
 
+    public static Subscription getList(String count, String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getList(count, sinceid, "");
+        return doListSubscriber(subscriber, o);
+    }
 
-    public static Subscription getLanguageList(String language, String since, Subscriber<List<Repository>> subscriber) {
+    public static Subscription getList(String count, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getList(count, "", "");
+        return doListSubscriber(subscriber, o);
+    }
 
-        Observable<List<Repository>> o = getService().getLanguageList(language, since);
-        return doSubscriberList(subscriber, o);
+    public static Subscription getList(String count, String sinceid, String county, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getList(count, sinceid, county);
+        return doListSubscriber(subscriber, o);
     }
 
     private static <T> Subscription doSubscriberList(Subscriber<List<T>> subscriber, Observable<List<T>> listObservable) {
         return listObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsafeSubscribe(subscriber);
+    }
 
+    public static Subscription getHaiTaoList(String count, String county, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, count);
+        return doListSubscriber(subscriber, o);
+    }
+
+    public static Subscription getHaiTaoList(String county, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, "");
+        return doListSubscriber(subscriber, o);
+    }
+
+    public static Subscription getHotList(String county, LoadingSubscriber<List<HotEntity>> subscriber) {
+        Observable<WrapData<List<HotEntity>>> o = getService().getHLotist(county);
+        return doListSubscriber(subscriber, o);
+    }
+
+    public static Subscription getTrankList(String county, String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<Trank<List<Entity>>> o = getService().getTrankList(county, date, hour);
+        return doTrankListSubscriber(subscriber, o);
+    }
+
+    public static Subscription search(String county, String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().search(county, date, hour);
+        return doListSubscriber(subscriber, o);
     }
 
 
-//
+
 //    private static <T> Subscription doSubscriber(Subscriber<T> subscriber, Observable<WrapData<T>> observable) {
 //        Observable<WrapData<T>> o = observable
 //                .subscribeOn(Schedulers.io())
@@ -69,11 +97,43 @@ public class HttpManager {
 //        return doMap(subscriber, o);
 //    }
 
-
     private static <T> Subscription doSubscriber(Subscriber<T> subscriber, Observable<T> observable) {
         return observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).unsafeSubscribe(subscriber);
+    }
+
+    private static <T> Subscription doListSubscriber(Subscriber<List<T>> subscriber, Observable<WrapData<List<T>>> observable) {
+        return doListMap(subscriber, observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()));
+    }
+
+    private static <T> Subscription doTrankListSubscriber(Subscriber<List<T>> subscriber, Observable<Trank<List<T>>> observable) {
+        return observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).map(new Func1<Trank<List<T>>, List<T>>() {
+                    @Override
+                    public List<T> call(Trank<List<T>> data) {
+                        if (data != null && "ok".equals(data.getStatus())) {
+                            return data.getData();
+                        }
+                        return null;
+                    }
+                }).unsafeSubscribe(subscriber);
+    }
+
+    private static <T> Subscription doListMap(Subscriber<List<T>> subscriber, Observable<WrapData<List<T>>> observable) {
+        return observable.map(new Func1<WrapData<List<T>>, List<T>>() {
+            @Override
+            public List<T> call(WrapData<List<T>> data) {
+                if (data != null && "ok".equals(data.getStatus())) {
+                    return data.getData();
+                }
+                return null;
+            }
+        }).unsafeSubscribe(subscriber);
+
     }
 
 
@@ -132,7 +192,7 @@ public class HttpManager {
 //        return o.map(new Func1<WrapData<T>, T>() {
 //            @Override
 //            public T call(WrapData<T> tWrapData) {
-//                Activity currentActivity = App.getCurrentActivity();
+//                Activity currentActivity = wApp.getCurrentActivity();
 //                L.e("  doMap   data  ------>>> " +tWrapData);
 //
 //                if (711 == tWrapData.getErrcode() && currentActivity != null) {
@@ -152,7 +212,7 @@ public class HttpManager {
 //    }
 //
 //    private static void runOnMain(Runnable runnable) {
-//        App.getHandler().post(runnable);
+//        Aepp.getHandler().post(runnable);
 //    }
 //
     public static ApiService getService() {

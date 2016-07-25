@@ -29,7 +29,7 @@ public interface ApiService {
 
     //   搜索
     @GET("getresult.php")
-    Observable<WrapData<List<Entity>>> searchHome(@Query("count") String count, @Query("q") String keyword, @Query("sinceid") String sinceid);
+    Observable<WrapData<List<Entity>>> search(@Query("count") String count, @Query("q") String keyword, @Query("sinceid") String sinceid);
 
 //    http://guangdiu.com/api/getresult.php?count=30&q=%E9%9E%8B
 
