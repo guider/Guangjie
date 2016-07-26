@@ -91,7 +91,7 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
         adapter = new EzAdapter<D>(getLayout()) {
             @Override
             protected void setView(D d, EzHolder holder, Context context) {
-
+                setItemData(d,holder,context);
             }
         };
         listView.setAdapter(adapter);

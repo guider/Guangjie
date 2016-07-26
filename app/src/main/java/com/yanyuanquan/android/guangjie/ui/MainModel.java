@@ -16,4 +16,7 @@ public class MainModel extends BaseModel {
         return HttpManager.getList(subscriber);
     }
 
+    public Subscription getHaiTaoList(LoadingSubscriber subscriber) {
+        return HttpManager.getHotList("us",subscriber);
+    }
 }

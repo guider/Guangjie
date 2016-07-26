@@ -50,6 +50,17 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGr
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int id) {
+        switch (id){
+            case R.id.home:
+                manager.show(0);
+                break;
+            case R.id.aborad:
+                manager.show(1);
+                break;
+            default:
+                manager.show(2);
+            break;
+        }
 
     }
 

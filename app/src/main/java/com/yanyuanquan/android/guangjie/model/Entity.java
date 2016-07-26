@@ -142,4 +142,24 @@ public class Entity  {
     public void setCates(Object cates) {
         this.cates = cates;
     }
+
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", pubtime='" + pubtime + '\'' +
+                ", image='" + image + '\'' +
+                ", imgw=" + imgw +
+                ", imgh=" + imgh +
+                ", iftobuy=" + iftobuy +
+                ", fromsite='" + fromsite + '\'' +
+                ", country='" + country + '\'' +
+                ", mall='" + mall + '\'' +
+                ", buyurl='" + buyurl + '\'' +
+                ", dealfeature='" + dealfeature + '\'' +
+                ", cates=" + cates +
+                '}';
+    }
 }
