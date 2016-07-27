@@ -34,7 +34,7 @@ public class MainFragmentManager {
     private void init() {
         fragments.add(new HomeFragment());
         fragments.add(new HaiTaoFragment());
-        fragments.add(new HomeFragment());
+        fragments.add(new HotFragment());
         FragmentTransaction ft = fm.beginTransaction();
         for (Fragment f : fragments) {
             if (f != null) {
