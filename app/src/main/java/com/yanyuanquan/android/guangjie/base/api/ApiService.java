@@ -45,7 +45,7 @@ public interface ApiService {
 
     // 风云榜
     @GET("getranklist.php")
-    Observable<Trank<List<Entity>>> getTrankList(@Query("count") String count, @Query("date") String date, @Query("hour") String hour);
+    Observable<Trank<List<Entity>>> getTrankList(@Query("date") String date, @Query("hour") String hour);
 
 
     //    热门

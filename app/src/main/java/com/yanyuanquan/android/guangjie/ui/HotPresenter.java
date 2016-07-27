@@ -18,7 +18,7 @@ public class HotPresenter extends MainPresenter<HotFragment, List<Entity>> {
     }
 
     public void getData() {
-        subscription = model.getList(new LoadingSubscriber(view.getActivity(), mData, listener));
+        subscription = model.getTrankList("","" ,new LoadingSubscriber(view.getActivity(), mData, listener));
     }
 
     LoadingSubscriber.OnNextListener<List<Entity>> listener = new LoadingSubscriber.OnNextListener<List<Entity>>() {

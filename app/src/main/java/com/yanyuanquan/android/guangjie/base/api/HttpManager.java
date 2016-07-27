@@ -68,7 +68,7 @@ public class HttpManager {
     }
 
     public static Subscription getHaiTaoList(String county, LoadingSubscriber<List<Entity>> subscriber) {
-        return getHaiTaoList(county,null,subscriber);
+        return getHaiTaoList(county, null, subscriber);
     }
 
     public static Subscription getHotList(String county, LoadingSubscriber<List<HotEntity>> subscriber) {
@@ -76,8 +76,8 @@ public class HttpManager {
         return doListSubscriber(subscriber, o);
     }
 
-    public static Subscription getTrankList(String county, String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
-        Observable<Trank<List<Entity>>> o = getService().getTrankList(county, date, hour);
+    public static Subscription getTrankList(String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<Trank<List<Entity>>> o = getService().getTrankList(date, hour);
         return doTrankListSubscriber(subscriber, o);
     }
 
@@ -85,7 +85,6 @@ public class HttpManager {
         Observable<WrapData<List<Entity>>> o = getService().search(county, date, hour);
         return doListSubscriber(subscriber, o);
     }
-
 
 
 //    private static <T> Subscription doSubscriber(Subscriber<T> subscriber, Observable<WrapData<T>> observable) {

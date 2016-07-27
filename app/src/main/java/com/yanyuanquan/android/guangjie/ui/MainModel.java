@@ -19,4 +19,8 @@ public class MainModel extends BaseModel {
     public Subscription getHaiTaoList(LoadingSubscriber subscriber) {
         return HttpManager.getHaiTaoList("us",subscriber);
     }
+
+    public Subscription getTrankList(String date, String hour, LoadingSubscriber subscriber) {
+        return HttpManager.getTrankList(date,hour,subscriber);
+    }
 }
