@@ -62,14 +62,13 @@ public class HttpManager {
                 .unsafeSubscribe(subscriber);
     }
 
-    public static Subscription getHaiTaoList(String count, String county, LoadingSubscriber<List<Entity>> subscriber) {
+    public static Subscription getHaiTaoList(String county, String count, LoadingSubscriber<List<Entity>> subscriber) {
         Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, count);
         return doListSubscriber(subscriber, o);
     }
 
     public static Subscription getHaiTaoList(String county, LoadingSubscriber<List<Entity>> subscriber) {
-        Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, "");
-        return doListSubscriber(subscriber, o);
+        return getHaiTaoList(county,null,subscriber);
     }
 
     public static Subscription getHotList(String county, LoadingSubscriber<List<HotEntity>> subscriber) {

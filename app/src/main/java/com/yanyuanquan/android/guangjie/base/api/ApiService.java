@@ -21,7 +21,7 @@ public interface ApiService {
 
     //    首页 sinceid 分页
     @GET("getlist.php")
-    Observable<WrapData<List<Entity>>> getList(@Query("count") String count, @Query("sinceid") String sinceid, @Query("county") String county);
+    Observable<WrapData<List<Entity>>> getList(@Query("count") String count, @Query("sinceid") String sinceid, @Query("country") String county);
 
     //    详情 通用
     //    http://guangdiu.com/api/showdetail.php?v=2&id=2889803
@@ -36,7 +36,7 @@ public interface ApiService {
     //    海淘 首页
 //    getlist.php?country=us&count=30
     @GET("getlist.php")
-    Observable<WrapData<List<Entity>>> getHaiTaoList(@Query("county") String county, @Query("count") String count);
+    Observable<WrapData<List<Entity>>> getHaiTaoList(@Query("country") String county, @Query("count") String count);
 
 //
 //    分页
