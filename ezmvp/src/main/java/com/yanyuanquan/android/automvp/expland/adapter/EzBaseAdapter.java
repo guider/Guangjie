@@ -113,7 +113,7 @@ public abstract class EzBaseAdapter<D> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    protected boolean hasFooterView() {
+    public boolean hasFooterView() {
         return true;
     }
 

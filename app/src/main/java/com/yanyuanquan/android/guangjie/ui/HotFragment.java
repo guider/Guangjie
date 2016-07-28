@@ -2,6 +2,8 @@ package com.yanyuanquan.android.guangjie.ui;
 
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +20,10 @@ public class HotFragment extends EzListFragment<HotPresenter, Entity> {
 
     @Override
     public void initView() {
+        View footer = LayoutInflater.from(getActivity()).inflate(R.layout.item_hot_footer,null);
+        getListView().addFooterView(footer);
 
-    }
+        }
 
     @Override
     public void initData() {
@@ -49,4 +53,8 @@ public class HotFragment extends EzListFragment<HotPresenter, Entity> {
         ((TextView) holder.getView(R.id.time)).setText(entity.getFromsite());
     }
 
+    @Override
+    protected boolean hasFooter() {
+        return false;
+    }
 }

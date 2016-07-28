@@ -91,12 +91,15 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
         adapter = new EzAdapter<D>(getLayout()) {
             @Override
             protected void setView(D d, EzHolder holder, Context context) {
-                setItemData(d,holder,context);
+                setItemData(d, holder, context);
+            }
+
+            @Override
+            public boolean hasFooterView() {
+                return hasFooter();
             }
         };
         listView.setAdapter(adapter);
-
-
     }
 
     public EzAdapter<D> getAdapter() {
@@ -191,4 +194,7 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
         return R.color.float_transparent;
     }
 
+    protected boolean hasFooter() {
+        return true;
+    }
 }
