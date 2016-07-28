@@ -76,7 +76,7 @@ public class HttpManager {
         return doListSubscriber(subscriber, o);
     }
 
-    public static Subscription getTrankList(String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
+    public static Subscription getTrankList(String date, String hour, LoadingSubscriber<Trank<List<Entity>>>  subscriber) {
         Observable<Trank<List<Entity>>> o = getService().getTrankList(date, hour);
         return doTrankListSubscriber(subscriber, o);
     }
@@ -107,18 +107,10 @@ public class HttpManager {
                 .observeOn(AndroidSchedulers.mainThread()));
     }
 
-    private static <T> Subscription doTrankListSubscriber(Subscriber<List<T>> subscriber, Observable<Trank<List<T>>> observable) {
+    private static <T> Subscription doTrankListSubscriber(Subscriber<Trank<List<T>>> subscriber, Observable<Trank<List<T>>> observable) {
         return observable
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).map(new Func1<Trank<List<T>>, List<T>>() {
-                    @Override
-                    public List<T> call(Trank<List<T>> data) {
-                        if (data != null && "ok".equals(data.getStatus())) {
-                            return data.getData();
-                        }
-                        return null;
-                    }
-                }).unsafeSubscribe(subscriber);
+                .observeOn(AndroidSchedulers.mainThread()).unsafeSubscribe(subscriber);
     }
 
     private static <T> Subscription doListMap(Subscriber<List<T>> subscriber, Observable<WrapData<List<T>>> observable) {
