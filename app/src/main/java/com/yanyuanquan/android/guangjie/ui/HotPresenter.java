@@ -18,12 +18,12 @@ public class HotPresenter extends MainPresenter<HotFragment, List<Entity>> {
     }
 
     public void getData() {
-        subscription = model.getTrankList("","" ,new LoadingSubscriber(view.getActivity(), mData, listener));
+        unsubscribe();
+        subscription = model.getTrankList("", "", new LoadingSubscriber(view.getActivity(), mData, listener));
     }
-
     LoadingSubscriber.OnNextListener<List<Entity>> listener = new LoadingSubscriber.OnNextListener<List<Entity>>() {
         @Override
-        public void onLoadSuccess( List<Entity> datas) {
+        public void onLoadSuccess(List<Entity> datas) {
             L.e(datas.toString());
             view.getAdapter().setData(datas);
             view.setRefreshComplete();
@@ -34,4 +34,11 @@ public class HotPresenter extends MainPresenter<HotFragment, List<Entity>> {
             view.setRefreshComplete();
         }
     };
+
+    public void getLast() {
+        subscription = model.getTrankList(getCacheData(), "", new LoadingSubscriber(view.getActivity(), mData, listener));
+    }
+
+    public void getNext() {
+    }
 }
