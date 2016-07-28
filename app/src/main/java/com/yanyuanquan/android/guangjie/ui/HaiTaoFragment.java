@@ -38,7 +38,7 @@ public class HaiTaoFragment extends EzListFragment<HaiTaoPresenter, Entity> {
 
     @Override
     public void loadMore() {
-
+        presenter.loadMore();
     }
 
     @Override

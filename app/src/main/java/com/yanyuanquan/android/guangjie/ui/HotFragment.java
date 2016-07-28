@@ -38,7 +38,7 @@ public class HotFragment extends EzListFragment<HotPresenter, Entity> implements
 
     @Override
     public void onRefresh() {
-        presenter.getData();
+        presenter.getData("","");
     }
 
     @Override
@@ -79,4 +79,11 @@ public class HotFragment extends EzListFragment<HotPresenter, Entity> implements
     }
 
 
+    public void sethasNext(boolean hasNext) {
+        next.setEnabled(hasNext);
+    }
+
+    public void sethasLast(boolean hasLast) {
+        last.setEnabled(hasLast);
+    }
 }

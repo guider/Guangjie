@@ -39,7 +39,7 @@ public class HomeFragment extends EzListFragment<HomePresenter, Entity> {
 
     @Override
     public void loadMore() {
-
+        presenter.loadMore();
     }
 
     @Override
@@ -49,5 +49,6 @@ public class HomeFragment extends EzListFragment<HomePresenter, Entity> {
         ((TextView) holder.getView(R.id.channel)).setText(entity.getPubtime());
         ((TextView) holder.getView(R.id.time)).setText(entity.getFromsite());
     }
+
 
 }

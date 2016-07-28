@@ -36,7 +36,7 @@ public interface ApiService {
     //    海淘 首页
 //    getlist.php?country=us&count=30
     @GET("getlist.php")
-    Observable<WrapData<List<Entity>>> getHaiTaoList(@Query("country") String county, @Query("count") String count);
+    Observable<WrapData<List<Entity>>> getHaiTaoList(@Query("country") String county, @Query("sinceid") String sinceid);
 
 //
 //    分页

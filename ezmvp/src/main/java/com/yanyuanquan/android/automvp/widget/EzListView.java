@@ -2,8 +2,11 @@ package com.yanyuanquan.android.automvp.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.ListView;
+
+import java.util.List;
 
 /**
  * Created by guider on 16/7/18.
@@ -17,15 +20,18 @@ public class EzListView extends ListView implements AbsListView.OnScrollListener
 
     public EzListView(Context context) {
         super(context);
+        this.setOnScrollListener(this);
     }
 
 
     public EzListView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.setOnScrollListener(this);
     }
 
     public EzListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.setOnScrollListener(this);
 
     }
 

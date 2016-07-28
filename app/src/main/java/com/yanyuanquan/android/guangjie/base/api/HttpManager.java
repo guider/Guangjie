@@ -41,15 +41,16 @@ public class HttpManager {
         return doListSubscriber(subscriber, o);
     }
 
+    public static Subscription getList(String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getList("", sinceid, "");
+        return doListSubscriber(subscriber, o);
+    }
+
     public static Subscription getList(String count, String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
         Observable<WrapData<List<Entity>>> o = getService().getList(count, sinceid, "");
         return doListSubscriber(subscriber, o);
     }
 
-    public static Subscription getList(String count, LoadingSubscriber<List<Entity>> subscriber) {
-        Observable<WrapData<List<Entity>>> o = getService().getList(count, "", "");
-        return doListSubscriber(subscriber, o);
-    }
 
     public static Subscription getList(String count, String sinceid, String county, LoadingSubscriber<List<Entity>> subscriber) {
         Observable<WrapData<List<Entity>>> o = getService().getList(count, sinceid, county);
@@ -62,8 +63,8 @@ public class HttpManager {
                 .unsafeSubscribe(subscriber);
     }
 
-    public static Subscription getHaiTaoList(String county, String count, LoadingSubscriber<List<Entity>> subscriber) {
-        Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, count);
+    public static Subscription getHaiTaoList(String county, String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().getHaiTaoList(county, sinceid);
         return doListSubscriber(subscriber, o);
     }
 
@@ -76,7 +77,7 @@ public class HttpManager {
         return doListSubscriber(subscriber, o);
     }
 
-    public static Subscription getTrankList(String date, String hour, LoadingSubscriber<Trank<List<Entity>>>  subscriber) {
+    public static Subscription getTrankList(String date, String hour, LoadingSubscriber<Trank<List<Entity>>> subscriber) {
         Observable<Trank<List<Entity>>> o = getService().getTrankList(date, hour);
         return doTrankListSubscriber(subscriber, o);
     }

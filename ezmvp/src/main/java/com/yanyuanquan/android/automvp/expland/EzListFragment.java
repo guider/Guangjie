@@ -124,7 +124,7 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
             });
     }
 
-    protected void setRefreshCompleteDelayed(int time) {
+    public void setRefreshCompleteDelayed(int time) {
         if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.postDelayed(new Runnable() {
                 @Override
@@ -134,13 +134,18 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
                 }
             }, 500);
     }
+    public void setLoadMoreComplete(boolean hasMore) {
+        listView.setLoadMoreComplete();
+    }
 
+    public void setLoadMoreComplete() {
+        listView.setLoadMoreComplete();
+    }
     @Override
     public void init() {
         listView = (EzListView) getView().findViewById(R.id.listview);
         listView.setOnLoadMoreLinstener(this);
         initAdapter();
-
         swipeRefreshLayout = (SwipeRefreshLayoutCompat) getView().findViewById(R.id.swiperefreshlayout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -197,4 +202,5 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
     protected boolean hasFooter() {
         return true;
     }
+
 }

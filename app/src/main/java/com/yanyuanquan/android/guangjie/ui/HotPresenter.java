@@ -1,6 +1,7 @@
 package com.yanyuanquan.android.guangjie.ui;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.android.guider.util.L;
 import com.yanyuanquan.android.guangjie.base.widget.LoadingSubscriber;
@@ -29,6 +30,8 @@ public class HotPresenter extends MainPresenter<HotFragment, Trank<List<Entity>>
         public void onLoadSuccess(Trank<List<Entity>> datas) {
             view.getAdapter().setData(datas.getData());
             view.setRefreshComplete();
+            view.sethasNext(!TextUtils.isEmpty(datas.getNexthourdate()));
+            view.sethasLast(!TextUtils.isEmpty(datas.getLasthourdate()));
         }
 
         @Override

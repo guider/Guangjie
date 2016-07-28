@@ -5,6 +5,8 @@ import com.yanyuanquan.android.guangjie.base.BaseModel;
 import com.yanyuanquan.android.guangjie.base.api.HttpManager;
 import com.yanyuanquan.android.guangjie.base.widget.LoadingSubscriber;
 
+import java.io.Serializable;
+
 import rx.Subscription;
 
 /**
@@ -22,5 +24,13 @@ public class MainModel extends BaseModel {
 
     public Subscription getTrankList(String date, String hour, LoadingSubscriber subscriber) {
         return HttpManager.getTrankList(date,hour,subscriber);
+    }
+
+    public Subscription getList(String sinceid, LoadingSubscriber subscriber) {
+        return HttpManager.getList(sinceid,subscriber);
+    }
+
+    public Subscription getHaiTaoList(String sinceid, LoadingSubscriber subscriber) {
+        return HttpManager.getHaiTaoList("us",sinceid,subscriber);
     }
 }
