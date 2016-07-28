@@ -16,18 +16,17 @@ public class HotPresenter extends MainPresenter<HotFragment, Trank<List<Entity>>
     @Override
     public void onPostCreate(@NonNull HotFragment view) {
         super.onPostCreate(view);
-        getData();
+        getData(getCacheData() == null ? "" : getCacheData().getNexthourdate(), getCacheData() == null ? "" : getCacheData().getNexthourhour());
     }
 
-    public void getData() {
+    public void getData(String date, String hour) {
         unsubscribe();
-        subscription = model.getTrankList("", "", new LoadingSubscriber(view.getActivity(), mData, listener));
+        subscription = model.getTrankList(date, hour, new LoadingSubscriber(view.getActivity(), mData, listener));
     }
 
     LoadingSubscriber.OnNextListener<Trank<List<Entity>>> listener = new LoadingSubscriber.OnNextListener<Trank<List<Entity>>>() {
         @Override
         public void onLoadSuccess(Trank<List<Entity>> datas) {
-            L.e(datas.toString());
             view.getAdapter().setData(datas.getData());
             view.setRefreshComplete();
         }
@@ -39,9 +38,11 @@ public class HotPresenter extends MainPresenter<HotFragment, Trank<List<Entity>>
     };
 
     public void getLast() {
-        subscription = model.getTrankList(getCacheData(), "", new LoadingSubscriber(view.getActivity(), mData, listener));
+        getData(getCacheData() == null ? "" : getCacheData().getLasthourdate(), getCacheData() == null ? "" : getCacheData().getLasthourhour());
+
     }
 
     public void getNext() {
+        getData(getCacheData() == null ? "" : getCacheData().getNexthourdate(), getCacheData() == null ? "" : getCacheData().getNexthourhour());
     }
 }
