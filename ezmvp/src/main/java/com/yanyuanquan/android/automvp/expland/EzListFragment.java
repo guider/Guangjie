@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,7 +30,8 @@ import com.yanyuanquan.android.automvp.widget.SwipeRefreshLayoutCompat;
  * github https://github.com/guider
  */
 public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragment<P>
-        implements EzListView.onLoadMoreLinstener, SwipeRefreshLayoutCompat.OnRefreshListener {
+        implements EzListView.onLoadMoreLinstener, SwipeRefreshLayoutCompat.OnRefreshListener
+        ,AdapterView.OnItemClickListener{
 
     private EzListView listView;
     private SwipeRefreshLayoutCompat swipeRefreshLayout;
@@ -145,6 +147,7 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
     public void init() {
         listView = (EzListView) getView().findViewById(R.id.listview);
         listView.setOnLoadMoreLinstener(this);
+        listView.setOnItemClickListener(this);
         initAdapter();
         swipeRefreshLayout = (SwipeRefreshLayoutCompat) getView().findViewById(R.id.swiperefreshlayout);
         swipeRefreshLayout.setOnRefreshListener(this);

@@ -8,9 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by apple on 16/7/25.
- */
+
 
 public class MainFragmentManager {
 

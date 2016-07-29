@@ -1,1 +1,1 @@
-include ':app', ':iosdialog', ':devhelper', ':ezmvp'
+include ':app', ':iosdialog', ':devhelper', ':ezmvp', ':autowebview'

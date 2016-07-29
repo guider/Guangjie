@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoWebView">
+        <attr name="JsEnable" format="boolean|reference" />
+        <attr name="ProgressStyle" format="reference"/>
+        <attr name="Progress" format="integer|reference"/>
+        <attr name="secondProgress" format="integer|reference"/>
+        <attr name="progressDrawable" format="reference"/>
+        <attr name="progressWidth" format="reference|dimension"/>
+    </declare-styleable>
+</resources>

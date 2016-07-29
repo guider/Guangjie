@@ -101,7 +101,7 @@ public class UtilFragment extends Fragment {
     }
 
     public void intent2Activity(Class<? extends Activity> cls, String params) {
-        Intent intent = new Intent(context, cls);
+        Intent intent = new Intent( getActivity(), cls);
         if (!TextUtils.isEmpty(params)) {
             intent.putExtra(cls.getName(), params);
         }

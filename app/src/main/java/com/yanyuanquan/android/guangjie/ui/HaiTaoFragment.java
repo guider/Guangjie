@@ -2,6 +2,8 @@ package com.yanyuanquan.android.guangjie.ui;
 
 
 import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,4 +51,8 @@ public class HaiTaoFragment extends EzListFragment<HaiTaoPresenter, Entity> {
         ((TextView) holder.getView(R.id.time)).setText(entity.getFromsite());
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
 }

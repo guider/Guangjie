@@ -4,6 +4,7 @@ package com.yanyuanquan.android.guangjie.ui;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,6 +65,10 @@ public class HotFragment extends EzListFragment<HotPresenter, Entity> implements
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
 
     @Override
     public void setItemData(Entity entity, EzHolder holder, Context context) {
