@@ -12,6 +12,7 @@ import com.yanyuanquan.android.guangjie.R;
 import com.yanyuanquan.android.guangjie.base.BaseActivity;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
