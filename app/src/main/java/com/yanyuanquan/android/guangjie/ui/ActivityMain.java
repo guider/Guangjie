@@ -1,7 +1,7 @@
 package com.yanyuanquan.android.guangjie.ui;
 
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -10,18 +10,14 @@ import com.yanyuanquan.android.guangjie.R;
 import com.yanyuanquan.android.guangjie.base.BaseActivity;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Presenter(MainPresenter.class)
 public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGroup.OnCheckedChangeListener {
 
-    @Bind(R.id.back)
-    ImageView back;
     @Bind(R.id.title)
     TextView title;
-    @Bind(R.id.confirm)
-    ImageView confirm;
-    @Bind(R.id.topbar)
-    FrameLayout topbar;
     @Bind(R.id.radiogroup)
     RadioGroup radiogroup;
 
@@ -50,7 +46,7 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGr
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int id) {
-        switch (id){
+        switch (id) {
             case R.id.home:
                 manager.show(0);
                 break;
@@ -59,7 +55,7 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGr
                 break;
             default:
                 manager.show(2);
-            break;
+                break;
         }
 
     }
@@ -69,6 +65,16 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGr
         super.onDestroy();
         if (manager != null) {
             manager.onDestory();
+        }
+    }
+    @OnClick({R.id.fire, R.id.search})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fire:
+                break;
+            case R.id.search:
+                intent2Activity(ActivitySearch.class);
+                break;
         }
     }
 }
