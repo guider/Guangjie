@@ -4,8 +4,10 @@ import com.yanyuanquan.android.automvp.model.EzModel;
 import com.yanyuanquan.android.guangjie.base.BaseModel;
 import com.yanyuanquan.android.guangjie.base.api.HttpManager;
 import com.yanyuanquan.android.guangjie.base.widget.LoadingSubscriber;
+import com.yanyuanquan.android.guangjie.model.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import rx.Subscription;
 
@@ -32,5 +34,13 @@ public class MainModel extends BaseModel {
 
     public Subscription getHaiTaoList(String sinceid, LoadingSubscriber subscriber) {
         return HttpManager.getHaiTaoList("us",sinceid,subscriber);
+    }
+
+    public Subscription search(String key, LoadingSubscriber<List<Entity>> subscriber) {
+        return search(key,"",subscriber);
+    }
+
+    public Subscription search(String key, String id, LoadingSubscriber<List<Entity>> listLoadingSubscriber) {
+        return HttpManager.search(key,id,listLoadingSubscriber);
     }
 }

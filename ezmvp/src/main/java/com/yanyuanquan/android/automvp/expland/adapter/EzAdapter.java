@@ -40,6 +40,10 @@ public abstract class EzAdapter<T> extends EzBaseAdapter<T> {
     }
 
 
+    public T getLastItemData(){
+        return ((mDatas!=null&&mDatas.size()>0)?mDatas.get(mDatas.size()-1):null);
+    }
+
     public int getState() {
         return this.state;
     }

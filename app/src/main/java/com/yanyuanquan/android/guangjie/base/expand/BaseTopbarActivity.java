@@ -10,6 +10,9 @@ import com.yanyuanquan.android.automvp.annotation.Topbar;
 import com.yanyuanquan.android.automvp.presenter.EzPresenter;
 import com.yanyuanquan.android.guangjie.R;
 import com.yanyuanquan.android.guangjie.base.BaseActivity;
+import com.yanyuanquan.android.guangjie.model.Entity;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -73,4 +76,5 @@ public abstract class BaseTopbarActivity<P extends EzPresenter> extends BaseActi
     protected void confirm() {
 
     }
+
 }

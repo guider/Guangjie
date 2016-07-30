@@ -82,8 +82,12 @@ public class HttpManager {
         return doTrankListSubscriber(subscriber, o);
     }
 
-    public static Subscription search(String county, String date, String hour, LoadingSubscriber<List<Entity>> subscriber) {
-        Observable<WrapData<List<Entity>>> o = getService().search(county, date, hour);
+    public static Subscription search(String q, String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
+        return search("", q, sinceid, subscriber);
+    }
+
+    public static Subscription search(String count, String q, String sinceid, LoadingSubscriber<List<Entity>> subscriber) {
+        Observable<WrapData<List<Entity>>> o = getService().search(count, q, sinceid);
         return doListSubscriber(subscriber, o);
     }
 

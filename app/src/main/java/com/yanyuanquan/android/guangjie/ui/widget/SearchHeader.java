@@ -25,7 +25,7 @@ public class SearchHeader extends ComponentCompat implements View.OnClickListene
     @Bind(R.id.search_view)
     SearchView searchView;
 
-    public SearchHeader(Context context) {
+    public SearchHeader(final Context context) {
         super(context);
         view = LayoutInflater.from(context).inflate(R.layout.item_searchview, null);
         ButterKnife.bind(this, view);
@@ -34,10 +34,8 @@ public class SearchHeader extends ComponentCompat implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        L.d("   query   text :  " + searchView.getQuery().toString());
         if (listener != null && !TextUtils.isEmpty(searchView.getQuery())) {
             listener.search(searchView.getQuery().toString());
-            L.d("   query   text :  " + searchView.getQuery().toString());
         } else if (!TextUtils.isEmpty(searchView.getQuery())) {
             Toast.makeText(context, "请输入搜索内容", Toast.LENGTH_LONG).show();
         }

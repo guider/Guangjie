@@ -15,16 +15,7 @@
             <option value="$PROJECT_DIR$/iosdialog" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/autowebview" />
-            <option value="$PROJECT_DIR$/devhelper" />
-            <option value="$PROJECT_DIR$/ezmvp" />
-            <option value="$PROJECT_DIR$/iosdialog" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
