@@ -53,6 +53,8 @@ public class HaiTaoFragment extends EzListFragment<HaiTaoPresenter, Entity> {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        if (adapter!=null&&adapter.getData(i)!=null){
+            intent2Activity(ActivityWebView.class,adapter.getData(i).getBuyurl());
+        }
     }
 }

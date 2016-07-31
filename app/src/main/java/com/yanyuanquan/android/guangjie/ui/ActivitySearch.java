@@ -3,6 +3,7 @@ package com.yanyuanquan.android.guangjie.ui;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yanyuanquan.android.automvp.annotation.Presenter;
@@ -26,7 +27,8 @@ import butterknife.ButterKnife;
  */
 @Topbar(value = (R.string.search_zhekou))
 @Presenter(SearchPresenter.class)
-public class ActivitySearch extends BaseTopbarActivity<SearchPresenter> implements SearchHeader.SearchListener, EzListView.onLoadMoreLinstener {
+public class ActivitySearch extends BaseTopbarActivity<SearchPresenter> implements AdapterView.OnItemClickListener,
+        SearchHeader.SearchListener, EzListView.onLoadMoreLinstener {
 
     SearchAdapter adapter;
     @Bind(R.id.listview)
@@ -56,6 +58,13 @@ public class ActivitySearch extends BaseTopbarActivity<SearchPresenter> implemen
     @Override
     protected int getLayout() {
         return R.layout.activity_search;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (adapter!=null&&adapter.getData(i)!=null){
+            intent2Activity(ActivityWebView.class,adapter.getData(i).getBuyurl());
+        }
     }
 
     @Override

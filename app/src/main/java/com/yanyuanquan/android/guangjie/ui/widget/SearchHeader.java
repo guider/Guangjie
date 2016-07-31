@@ -6,6 +6,7 @@ import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.android.guider.util.L;
@@ -55,4 +56,6 @@ public class SearchHeader extends ComponentCompat implements View.OnClickListene
     public void onDestory() {
         ButterKnife.unbind(this);
     }
+
+
 }
