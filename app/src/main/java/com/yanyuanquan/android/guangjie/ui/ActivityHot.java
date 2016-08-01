@@ -1,7 +1,6 @@
 package com.yanyuanquan.android.guangjie.ui;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,11 +17,10 @@ import com.yanyuanquan.android.guangjie.model.HotEntity;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 @Topbar(value = (R.string.hot))
-@Presenter(FirePresenter.class)
-public class ActivityFire extends BaseTopbarActivity<FirePresenter> {
+@Presenter(HotPresenter.class)
+public class ActivityHot extends BaseTopbarActivity<HotPresenter> {
     @Bind(R.id.listview)
     ListView listview;
     HotAdater adater;
@@ -60,9 +58,8 @@ public class ActivityFire extends BaseTopbarActivity<FirePresenter> {
 
         @Override
         protected void setView(HotEntity entity, EzHolder holder, Context context) {
-            Glide.with(ActivityFire.this).load(entity.getImage()).into((ImageView) holder.getView(R.id.icon));
+            Glide.with(ActivityHot.this).load(entity.getImage()).into((ImageView) holder.getView(R.id.icon));
             ((TextView) holder.getView(R.id.title)).setText(entity.getTitle());
-            ((TextView) holder.getView(R.id.channel)).setText(entity.getTitle());
         }
     }
 }

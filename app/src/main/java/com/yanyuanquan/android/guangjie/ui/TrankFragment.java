@@ -16,8 +16,8 @@ import com.yanyuanquan.android.automvp.expland.adapter.EzHolder;
 import com.yanyuanquan.android.guangjie.R;
 import com.yanyuanquan.android.guangjie.model.Entity;
 
-@Presenter(HotPresenter.class)
-public class HotFragment extends EzListFragment<HotPresenter, Entity> implements View.OnClickListener {
+@Presenter(TrankPresenter.class)
+public class TrankFragment extends EzListFragment<TrankPresenter, Entity> implements View.OnClickListener {
 
     Button next, last;
 
