@@ -2,4 +2,5 @@
     <string name="app_name">逛逛</string>
     <string name="detail">折扣详情</string>
     <string name="search_zhekou">搜索全网折扣</string>
+    <string name="hot">热门</string>
 </resources>

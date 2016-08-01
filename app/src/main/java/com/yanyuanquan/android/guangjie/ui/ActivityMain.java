@@ -1,5 +1,6 @@
 package com.yanyuanquan.android.guangjie.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -71,6 +72,7 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements RadioGr
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fire:
+                intent2Activity(ActivityFire.class);
                 break;
             case R.id.search:
                 intent2Activity(ActivitySearch.class);

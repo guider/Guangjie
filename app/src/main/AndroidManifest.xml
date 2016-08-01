@@ -28,6 +28,8 @@
         <activity
             android:name=".ui.ActivitySearch"
             android:launchMode="singleTop" />
+
+        <activity android:name=".ui.ActivityFire"/>
     </application>
 
 </manifest>
